@@ -31,6 +31,7 @@ services:
       MYSQL_DATABASE: devLife
       MYSQL_USER: userphp
       MYSQL_PASSWORD: passuserphp
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -42,7 +43,7 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: db
-      PMA_ARBITRARY: 0
+      MYSQL_ROOT_PASSWORD: root_password
     depends_on:
       - db
     networks:
