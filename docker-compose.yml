@@ -37,8 +37,7 @@ services:
       - esiee-network
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    platform: linux/arm64
+    image: arm64v8/phpmyadmin
     ports:
       - "8080:80"
     environment:
