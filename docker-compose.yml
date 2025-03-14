@@ -42,13 +42,7 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: db
-      PMA_USER: userphp
-      PMA_PASSWORD: passuserphp
-      MYSQL_USER: userphp
-      MYSQL_PASSWORD: passuserphp
       PMA_ARBITRARY: 0
-      PMA_ABSOLUTE_URI: http://localhost:8080/
-      MYSQL_ROOT_PASSWORD: root_password
     depends_on:
       - db
     networks:
