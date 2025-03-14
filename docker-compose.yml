@@ -29,8 +29,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: devLife
-      MYSQL_USER: user_dev
-      MYSQL_PASSWORD: user_password
+      MYSQL_USER: userphp
+      MYSQL_PASSWORD: passuserphp
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -42,8 +42,13 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: db
-      PMA_USER: user_dev
-      PMA_PASSWORD: user_password
+      PMA_USER: userphp
+      PMA_PASSWORD: passuserphp
+      MYSQL_USER: userphp
+      MYSQL_PASSWORD: passuserphp
+      PMA_ARBITRARY: 0
+      PMA_ABSOLUTE_URI: http://localhost:8080/
+      MYSQL_ROOT_PASSWORD: root_password
     depends_on:
       - db
     networks:
