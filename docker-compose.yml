@@ -31,7 +31,11 @@ services:
       MYSQL_DATABASE: devLife
       MYSQL_USER: userphp
       MYSQL_PASSWORD: passuserphp
-    command: --default-authentication-plugin=mysql_native_password
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --skip-character-set-client-handshake
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -39,11 +43,19 @@ services:
 
   phpmyadmin:
     image: arm64v8/phpmyadmin
+    restart: always
     ports:
       - "8080:80"
     environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root_password
+      - PMA_ARBITRARY=0
+      - PMA_HOST=db
+      - MYSQL_USER=userphp
+      - MYSQL_PASSWORD=passuserphp
+      - MYSQL_ROOT_PASSWORD=root_password
+      - PMA_HOSTS=db
+      - PMA_VERBOSE=db
+      - PMA_PORT=3306
+      - UPLOAD_LIMIT=300M
     depends_on:
       - db
     networks:
