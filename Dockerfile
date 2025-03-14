@@ -27,3 +27,7 @@ COPY vsftpd.conf /etc/vsftpd.conf
 EXPOSE 21
 
 CMD ["vsftpd", "/etc/vsftpd.conf"]
+
+# docker build -t esiee-ftp-server .
+# docker exec -it ftp-container /bin/bash
+# docker run -d -p 21:21 --name ftp-container esiee-ftp-server
