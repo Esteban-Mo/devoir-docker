@@ -19,6 +19,8 @@ RUN mkdir /CSI /LIA \
 RUN chown root:CSI /CSI && chmod 770 /CSI \
     && chown root:LIA /LIA && chmod 770 /LIA
 
+RUN mkdir -p /var/run/vsftpd/empty
+
 COPY vsftpd.conf /etc/vsftpd.conf
 
 EXPOSE 21
