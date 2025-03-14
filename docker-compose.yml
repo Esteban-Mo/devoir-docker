@@ -4,7 +4,7 @@ services:
   ftp:
     build: .
     ports:
-      - "21:21"
+      - "2121:21"
     restart: always
     networks:
       - esiee-network
